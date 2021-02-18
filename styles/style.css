@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto:wght@400;500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+body {
+  font: 16px "Roboto", Arial;
+  color: #3b3735;
+  background: #faf4f2;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Archivo Black", Arial;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+header {
+  width: 100%;
+  height: 100vh;
+  color: #fff;
+}
+header .main {
+  text-align: center;
+}
+.btn {
+  font-size: 18px;
+  font-weight: 500;
+  padding: 14px 68px;
+  border-radius: 25px;
+}
+.btn.fill {
+  background: #fff;
+}
+.btn.fill.primary {
+  background: #e76f51;
+}
+.flex {
+  display: flex;
+}
+.flex.center-vertical {
+  justify-content: center;
+}
+.flex.center-horizontal {
+  align-items: center;
+}
