@@ -8,13 +8,49 @@
 </head>
 <body>
   <div id="app">
+    <nav class="flex center-horizontal">
+      <div class="logo">
+        <img src="./assets//logo.svg" alt="">
+      </div>
+      <a class="toggle"></a>
+    </nav>
     <header class="flex center-horizontal center-vertical">
       <div class="main">
         <h1>Find Yourself Outside</h1>
-        <p>Book unique camping experiences on over 300,000 campsites, cabins,<br> RV parks, public parks and more.</p>
+        <p>Book unique camping experiences on over 300,000 campsites, cabins, RV parks, public parks and more.</p>
         <a href="javascript:void(0)" class="btn primary fill">Discover</a>
       </div>
     </header>
+    <section class="services">
+      <card 
+        v-for="service in services"
+        :img-url="service.imgUrl"
+        :title="service.title"
+        :description="service.description"
+      >
+      </card>
+    </section>
+    <section class="destinations">
+      <div class="title-container">
+        <img src="./assets/explore.svg" alt="" class="explore">
+        <h2>
+          Explore Destinations<br>
+          & Activities
+        </h2>
+      </div>
+      <div class="wrapper">
+        <card 
+          v-for="destination in destinations"
+          :img-url="destination.imgUrl"
+          :title="destination.title"
+          :description="destination.description"
+          :is-item="true"
+          :price="destination.price"
+          :like="destination.like"
+        >
+        </card>
+      </div>
+    </section>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <script src="./js/index.js"></script>
