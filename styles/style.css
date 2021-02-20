@@ -23,9 +23,11 @@ h6 {
 }
 h1 {
   font-size: calc(2.9vw + 33px);
-  margin-bottom: 40px;
 }
 h2 {
+  font-size: 40px;
+}
+h2.responsive {
   font-size: calc(0.8vw + 27px);
 }
 h4 {
@@ -38,8 +40,22 @@ a {
 img {
   object-fit: cover;
 }
-section {
+section,
+footer {
   padding: 0 20px;
+}
+section {
+  margin-bottom: 120px;
+}
+input {
+  border: none;
+}
+input:focus {
+  outline: none;
+}
+li {
+  list-style: none;
+  line-height: 1.8;
 }
 nav {
   height: 50px;
@@ -71,6 +87,11 @@ header .main {
 header .main p {
   margin-bottom: 15px;
 }
+.cf:after {
+  content: '';
+  display: table;
+  clear: both;
+}
 .btn {
   font-size: 18px;
   font-weight: 500;
@@ -84,6 +105,13 @@ header .main p {
 .btn.fill.primary {
   background: #e76f51;
 }
+.btn.border {
+  color: #fff;
+  border: 1px solid;
+}
+.btn.border.primary {
+  color: #e76f51;
+}
 .flex {
   display: flex;
 }
@@ -94,7 +122,10 @@ header .main p {
   align-items: center;
 }
 .services {
-  transform: translateY(-100px);
+  margin-top: -100px;
+}
+.mb {
+  margin-bottom: 40px;
 }
 .card {
   text-align: center;
@@ -116,6 +147,7 @@ header .main p {
   height: 180px;
   width: 100%;
   border-radius: 20px;
+  filter: brightness(0.9) contrast(1.1);
 }
 .card .like {
   background: #fff;
@@ -149,4 +181,62 @@ header .main p {
 }
 .title-container .explore {
   margin-bottom: 30px;
+}
+.destinations .btn {
+  margin-top: 16px;
+}
+.subscription {
+  background: #f8e1db;
+  border-radius: 20px;
+  padding: 40px 20px;
+  box-shadow: 5px 10px 30px 0 rgba(59,55,53,0.05);
+}
+.subscription .tent {
+  width: 100%;
+}
+.subscription .text {
+  background: #fff;
+  height: 80px;
+  border-radius: 20px;
+  padding: 0 20px;
+  box-shadow: 5px 10px 30px 0 rgba(59,55,53,0.05);
+}
+.subscription .text input {
+  width: calc(100% - 50px);
+  font: 14px "Roboto", Arial;
+}
+.subscription .text .send {
+  background: #e76f51;
+  border-radius: 20px;
+  width: 50px;
+  height: 50px;
+  box-shadow: 5px 10px 30px 0 rgba(231,111,81,0.4);
+}
+.subscription .description {
+  margin-bottom: 26px;
+}
+footer {
+  background: #f8e1db;
+  position: relative;
+  border-radius: 22vw 22vw 0 0;
+  padding-top: 100px;
+}
+footer .mb {
+  margin-bottom: 52px;
+}
+footer h4 {
+  margin-bottom: 26px;
+}
+.scroll-top {
+  background: #fff;
+  border-radius: 20px;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: -30px;
+  right: 50%;
+  transform: translateX(50%);
+}
+.copy {
+  text-align: center;
 }

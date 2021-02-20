@@ -28,10 +28,24 @@ const Card = {
   }
 }
 
+const FooterMenuItem = {
+  template: `
+    <div>
+      <h4>{{title}}</h4>
+      <li v-for="item in items">{{item}}</li>
+    </div>
+  `,
+  props: {
+    title: String,
+    items: Array
+  }
+}
+
 const app = new Vue({
   el: '#app',
   components: {
     'card' : Card,
+    'footer-menu-item': FooterMenuItem 
   },
   data: {
     services: [
@@ -64,6 +78,18 @@ const app = new Vue({
         price: 36,
         like: false
       },
-    ]
+    ],
+    footerMenuItems: [
+      {
+        title: 'Get to Know Us',
+        items: [
+          'About Us',
+          'Rules & Reservation',
+          'Policies',
+          'Accessibility',
+          'Media Center'
+        ]
+      }
+    ] 
   }
 })

@@ -16,7 +16,7 @@
     </nav>
     <header class="flex center-horizontal center-vertical">
       <div class="main">
-        <h1>Find Yourself Outside</h1>
+        <h1  class="mb">Find Yourself Outside</h1>
         <p>Book unique camping experiences on over 300,000 campsites, cabins, RV parks, public parks and more.</p>
         <a href="javascript:void(0)" class="btn primary fill">Discover</a>
       </div>
@@ -33,7 +33,7 @@
     <section class="destinations">
       <div class="title-container">
         <img src="./assets/explore.svg" alt="" class="explore">
-        <h2>
+        <h2 class="responsive">
           Explore Destinations<br>
           & Activities
         </h2>
@@ -50,7 +50,43 @@
         >
         </card>
       </div>
+      <div class="flex center-vertical">
+        <a href="javascript:void(0)" class="btn border primary">View all</a>
+      </div>
     </section>
+    <section>
+      <div class="subscription">
+        <img class="tent mb" src="./assets/tent.svg" alt="">
+        <div class="content">
+          <h2 class="mb">Let's Stay in Touch</h2>
+          <p class="description">Get travel planning ideas, helpful tips, and stories from our visitors delivered right to your inbox.</p>
+          <div class="text flex center-horizontal">
+            <input type="text" placeholder="Email Address">
+            <a href="javascript:void(0)" class="send"></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="cf">
+      <a href="javascript:void(0)" class="scroll-top"></a>
+      <div>
+        <div class="description mb">
+          <h4>Hipcamp is everywhere you want to camp.</h4>
+          <p>Discover unique experiences on ranches, nature preserves, farms, vineyards, and public campgrounds across the U.S. Book tent camping, treehouses, cabins, yurts, primitive backcountry sites, car camping, airstreams, tiny houses, RV camping, glamping tents and more.</p>
+        </div>
+        <div class="footer-menu">
+          <footer-menu-item v-for="item in footerMenuItems" :title="item.title" :items="item.items" class="mb"></footer-menu-item>
+        </div>
+      </div>
+      <div class="app mb">
+        <h4>Download Our App</h4>
+        <div>
+          <img src="./assets/download-on-the-app-store-apple.svg" alt="">
+          <img src="./assets/google-play-badge.svg" alt="">
+        </div>
+      </div>
+      <p class="copy mb">© 2021. <a href="https://vancityjun.com">Vancityjun</a> All rights reserved.</p>
+    </footer>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <script src="./js/index.js"></script>
