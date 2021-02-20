@@ -1,0 +1,14 @@
+tablet_breakpoint = 650px
+desktop_breakpoint = 1024px
+
+mobile()
+  @media (max-width: tablet_breakpoint)
+    {block}
+
+tablet()
+  @media (min-width: tablet_breakpoint)
+    {block}
+
+desktop() 
+  @media (min-width desktop_breakpoint) 
+    {block}

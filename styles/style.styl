@@ -1,3 +1,5 @@
+@import 'mixin.styl'
+
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto:wght@400;500&display=swap')
 
 font = 16px "Roboto", Arial
@@ -7,6 +9,10 @@ font-color = #3B3735
 font-medium = 18px
 border-radius = 20px
 shadow = 5px 10px 30px 0
+
+square(n)
+  width: n
+  height: n
 
 *
   margin: 0
@@ -26,7 +32,7 @@ h1, h2, h3, h4, h5, h6
   font-family: heading
 
 h1
-  font-size: calc(2.9vw + 33px)
+  font-size: calc(2.3vw + 36px)
 
 h2
   font-size: 40px
@@ -43,11 +49,24 @@ a
 img
   object-fit: cover
 
-section, footer
-  padding: 0 20px
+ .flex-center
+  display: flex
+  justify-content: center
+  align-items: center
 
 section
-  margin-bottom: 120px
+  margin: 0 20px 120px
+
+.wrapper
+  max-width: 1518px
+  margin: 0 auto
+
+.card-wrapper
+  @extend .wrapper
+  +tablet()
+    display: flex
+    flex-flow: row wrap
+    justify-content: space-between
 
 input
   border: none;
@@ -65,14 +84,63 @@ nav
   top: 20px
   padding: 0 20px
   width: 100%
-  justify-content: space-between
   z-index: 1000
+  font-size: 18px
+
+  .wrapper
+    +mobile()
+     justify-content: space-between
 
   .toggle
-    width: 50px
-    height: 50px
+    display: block
+    square 50px
     border-radius: border-radius
     background: #fff
+    +desktop()
+      display: none
+
+  .menu
+    color: #fff
+    justify-content: space-between
+    width: calc(100% - 50px)
+    +mobile()
+      display: none
+  
+    ul
+      display: flex
+      flex-direction: row
+      justify-content: space-around
+      width: calc(100% - 150px - 16vw)
+      color: #D2D2D2
+
+      li
+        position: relative
+        &:after
+          transition: .3s
+          content: ''
+          background: primary-color
+          height: 3px
+          position: absolute
+          width: 100%
+          left: 0
+          transform: rotate(45deg) scaleX(0)
+          top: 50%
+
+        &:hover
+          color: #fff
+          transition: .3s
+
+        &.active
+          color: #fff
+
+          &:after
+            transform: rotate(45deg) scale(.8)
+
+    .sign
+      justify-content: space-between
+      width: 270px
+      .btn
+        width: 130px
 
 header
   width: 100%
@@ -80,10 +148,11 @@ header
   color: #fff
   background: url(../assets/banner.jpg) no-repeat center
   background-size: cover
-  border-radius: 0 0 100px 100px
+  border-radius: 0 0 calc(7vw + 70px) calc(7vw + 70px)
 
   .main
     text-align: center
+    max-width: 580px
 
     p
       margin-bottom: 15px
@@ -95,18 +164,21 @@ header
 }
 
 .btn
+  display: inline-flex
+  align-items: center
+  justify-content: center
   font-size: 18px
   font-weight: 500
-  padding: 14px 68px
+  height 50px
+  width: 205px
   border-radius: 25px
-  display: inline-block
     
   &.fill
     background: rgba(#8D8D8D .1)
     &.primary
       background: primary-color
 
-  &.border
+  &.outline
     color: #fff
     border: 1px solid
     &.primary
@@ -114,8 +186,10 @@ header
 
 .flex
   display: flex
+
   &.center-vertical
     justify-content: center
+
   &.center-horizontal
     align-items: center
 
@@ -129,8 +203,15 @@ header
   text-align: center
   background: #fff
   border-radius: border-radius
-  padding: 40px
+  padding: 43px 40px
   margin-bottom: 20px
+  min-width: 304px
+  min-height: 312px
+
+  +tablet()
+    width: calc(50% - 10px)
+  +desktop()
+    width: calc(25% - 22px)
 
   .img-container
     margin-bottom: 10px
@@ -141,7 +222,7 @@ header
   .thumbnail
     position: relative
 
-    img
+    >img
       height: 180px
       width: 100%
       border-radius: border-radius
@@ -149,12 +230,12 @@ header
 
   .like
     background: #fff
-    width: 40px
-    height: 40px
+    square 40px
     border-radius: 14px
     position: absolute
-    top: 20px;
-    right: 20px;
+    top: 20px
+    right: 20px
+    z-index: 10
 
   .price
     background: #fff
@@ -172,6 +253,7 @@ header
   .btn
     color: #8D8D8D
     margin-top: 24px
+    width: calc(31% + 110px)
 
 .title-container
   text-align: center
@@ -181,7 +263,7 @@ header
     margin-bottom: 30px
 
 .destinations
-  .btn
+  >.btn
     margin-top: 16px
 
 .subscription
@@ -189,9 +271,18 @@ header
   border-radius: border-radius
   padding: 40px 20px
   box-shadow: shadow rgba(#3b3735 .05)
+  @media (min-width: 800px)
+    display: flex
+    align-items: center
+    justify-content: space-around
+    flex-direction: row-reverse
+
+  @media (max-width: 800px)
+    text-align: center
 
   .tent
     width: 100%
+    max-width: 467px
 
   .text
     background: #fff
@@ -200,25 +291,52 @@ header
     padding: 0 20px
     box-shadow: shadow rgba(#3b3735 .05)
 
+    .mail
+      height: 18px
+      margin-right: 10px
+
     input
-      width: calc(100% - 50px)
+      width: 100%
       font: 14px "Roboto", Arial
 
     .send
       background: primary-color
       border-radius: border-radius
-      width: 50px
-      height: 50px
+      min-width 50px
+      square 50px
       box-shadow: shadow rgba(#E76F51 .4)
 
   .description
-    margin-bottom: 26px
+    margin: 0 auto 26px
+    max-width: 486px
 
 footer
   background: #F8E1DB
   position: relative
-  border-radius: 22vw 22vw 0 0
-  padding-top: 100px
+  border-radius: calc(7vw + 70px) calc(7vw + 70px) 0 0
+  padding: 100px 20px 0
+
+  .wrapper
+    +desktop()
+      display: flex
+      flex-flow: column wrap
+    
+    +desktop()
+      .container
+        display: flex
+        justify-content: space-between
+        >div 
+          width: 50%
+
+  .description
+    max-width: 615px
+
+  .footer-menu
+    +mobile()
+      flex-flow: row wrap
+  
+  .footer-menu-item
+    width: 50%
 
   .mb
     margin-bottom: 52px
@@ -229,12 +347,14 @@ footer
 .scroll-top
   background: #fff
   border-radius: border-radius
-  width: 60px
-  height 60px
+  square 60px
   position: absolute
   top: -30px
   right: 50%
   transform: translateX(50%)
+  @media (min-width: 800px)
+    right: 12vw
+
 
 .copy
   text-align: center

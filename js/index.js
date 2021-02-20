@@ -2,7 +2,9 @@ const Card = {
   template: `
     <div class="card">
       <div class="img-container" :class="isItem ? 'thumbnail' : null">
-        <div v-if="isItem" class="like"></div>
+        <div v-if="isItem" class="like flex-center">
+          <img :src="likeIcon()" alt=""/>
+        </div>
         <img :src="imgUrl" alt=""/>
       </div>
       <span v-if="isItem" class="price">\${{price}}/night</span>
@@ -25,6 +27,11 @@ const Card = {
       type: Boolean,
       default: false
     },
+  },
+  methods: {
+    likeIcon () {
+      return `./assets/icons/heart-${this.like ? 'filled' : 'outline'}.svg`
+    }
   }
 }
 
@@ -32,7 +39,11 @@ const FooterMenuItem = {
   template: `
     <div>
       <h4>{{title}}</h4>
-      <li v-for="item in items">{{item}}</li>
+      <li v-for="item in items">
+        <a href="javascript:void(0)">
+          {{item}}
+        </a>
+      </li>
     </div>
   `,
   props: {
@@ -41,7 +52,7 @@ const FooterMenuItem = {
   }
 }
 
-const app = new Vue({
+new Vue({
   el: '#app',
   components: {
     'card' : Card,
@@ -55,22 +66,43 @@ const app = new Vue({
         description: 'Return to your favorite spot or discover a new one that’s right for you.'
       },
       {
-        imgUrl: './assets/fire.svg',
+        imgUrl: './assets/ticket.svg',
         title: 'Camping & Day Use', 
         description: 'Return to your favorite spot or discover a new one that’s right for you.'
       },
       {
-        imgUrl: './assets/fire.svg',
+        imgUrl: './assets/license.svg',
         title: 'Camping & Day Use', 
         description: 'Return to your favorite spot or discover a new one that’s right for you.'
       },
       {
-        imgUrl: './assets/fire.svg',
+        imgUrl: './assets/fishing.svg',
         title: 'Camping & Day Use', 
         description: 'Return to your favorite spot or discover a new one that’s right for you.'
       },
     ],
     destinations: [
+      {
+        imgUrl: './assets/image4.jpg',
+        title: 'Luxury Tiny Beach Cabin', 
+        description: 'Book unique camping experiences on over 300,000 campsites.',
+        price: 36,
+        like: false
+      },
+      {
+        imgUrl: './assets/image4.jpg',
+        title: 'Luxury Tiny Beach Cabin', 
+        description: 'Book unique camping experiences on over 300,000 campsites.',
+        price: 36,
+        like: true
+      },
+      {
+        imgUrl: './assets/image4.jpg',
+        title: 'Luxury Tiny Beach Cabin', 
+        description: 'Book unique camping experiences on over 300,000 campsites.',
+        price: 36,
+        like: false
+      },
       {
         imgUrl: './assets/image4.jpg',
         title: 'Luxury Tiny Beach Cabin', 
@@ -89,7 +121,27 @@ const app = new Vue({
           'Accessibility',
           'Media Center'
         ]
-      }
-    ] 
+      },
+      {
+        title: 'Get to Know Us',
+        items: [
+          'About Us',
+          'Rules & Reservation',
+          'Policies',
+          'Accessibility',
+          'Media Center'
+        ]
+      },
+      {
+        title: 'Get to Know Us',
+        items: [
+          'About Us',
+          'Rules & Reservation',
+          'Policies',
+          'Accessibility',
+          'Media Center'
+        ]
+      },
+    ]
   }
 })

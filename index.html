@@ -8,13 +8,29 @@
 </head>
 <body>
   <div id="app">
-    <nav class="flex center-horizontal">
-      <div class="logo">
+    <nav>
+      <div class="wrapper flex center-horizontal">
         <img src="./assets//logo.svg" alt="">
+        <div class="menu flex center-horizontal">
+          <ul>
+            <li class="active"><a href="javascript:void(0)">Home</a></li>
+            <li><a href="javascript:void(0)">Destination</a></li>
+            <li><a href="javascript:void(0)">Near me</a></li>
+            <li><a href="javascript:void(0)">Events</a></li>
+            <li><a href="javascript:void(0)">Blog</a></li>
+            <li><a href="javascript:void(0)">Gallery</a></li>
+            <li><a href="javascript:void(0)">About</a></li>
+            <li><a href="javascript:void(0)">Contact us</a></li>
+          </ul>
+          <div class="sign flex center-horizontal">
+            <a href="javascript:void(0)" class="btn">Sign up</a>
+            <a href="javascript:void(0)" class="btn outline">Sign in</a>
+          </div>
+        </div>
+        <a class="toggle"></a>
       </div>
-      <a class="toggle"></a>
     </nav>
-    <header class="flex center-horizontal center-vertical">
+    <header class="flex-center">
       <div class="main">
         <h1  class="mb">Find Yourself Outside</h1>
         <p>Book unique camping experiences on over 300,000 campsites, cabins, RV parks, public parks and more.</p>
@@ -22,13 +38,15 @@
       </div>
     </header>
     <section class="services">
-      <card 
-        v-for="service in services"
-        :img-url="service.imgUrl"
-        :title="service.title"
-        :description="service.description"
-      >
-      </card>
+      <div class="card-wrapper">
+        <card 
+          v-for="service in services"
+          :img-url="service.imgUrl"
+          :title="service.title"
+          :description="service.description"
+        >
+        </card>
+      </div>
     </section>
     <section class="destinations">
       <div class="title-container">
@@ -38,7 +56,7 @@
           & Activities
         </h2>
       </div>
-      <div class="wrapper">
+      <div class="card-wrapper">
         <card 
           v-for="destination in destinations"
           :img-url="destination.imgUrl"
@@ -51,41 +69,46 @@
         </card>
       </div>
       <div class="flex center-vertical">
-        <a href="javascript:void(0)" class="btn border primary">View all</a>
+        <a href="javascript:void(0)" class="btn outline primary">View all</a>
       </div>
     </section>
     <section>
-      <div class="subscription">
+      <div class="subscription wrapper">
         <img class="tent mb" src="./assets/tent.svg" alt="">
         <div class="content">
           <h2 class="mb">Let's Stay in Touch</h2>
           <p class="description">Get travel planning ideas, helpful tips, and stories from our visitors delivered right to your inbox.</p>
           <div class="text flex center-horizontal">
+            <img class="mail" src="./assets/icons/mail.svg" alt="">
             <input type="text" placeholder="Email Address">
-            <a href="javascript:void(0)" class="send"></a>
+            <a href="javascript:void(0)" class="flex-center send">
+              <img src="./assets/icons/send.svg" alt="">
+            </a>
           </div>
         </div>
       </div>
     </section>
     <footer class="cf">
-      <a href="javascript:void(0)" class="scroll-top"></a>
-      <div>
-        <div class="description mb">
-          <h4>Hipcamp is everywhere you want to camp.</h4>
-          <p>Discover unique experiences on ranches, nature preserves, farms, vineyards, and public campgrounds across the U.S. Book tent camping, treehouses, cabins, yurts, primitive backcountry sites, car camping, airstreams, tiny houses, RV camping, glamping tents and more.</p>
+      <div class="wrapper">
+        <a href="javascript:void(0)" class="scroll-top flex-center"></a>
+        <div class="container">
+          <div class="description mb">
+            <h4>Hipcamp is everywhere you want to camp.</h4>
+            <p>Discover unique experiences on ranches, nature preserves, farms, vineyards, and public campgrounds across the U.S. Book tent camping, treehouses, cabins, yurts, primitive backcountry sites, car camping, airstreams, tiny houses, RV camping, glamping tents and more.</p>
+          </div>
+          <div class="footer-menu flex">
+            <footer-menu-item v-for="item in footerMenuItems" :title="item.title" :items="item.items" class="mb footer-menu-item"></footer-menu-item>
+          </div>
         </div>
-        <div class="footer-menu">
-          <footer-menu-item v-for="item in footerMenuItems" :title="item.title" :items="item.items" class="mb"></footer-menu-item>
+        <div class="app mb">
+          <h4>Download Our App</h4>
+          <div>
+            <img src="./assets/download-on-the-app-store-apple.svg" alt="">
+            <img src="./assets/google-play-badge.svg" alt="">
+          </div>
         </div>
+        <p class="copy mb">© 2021. <a href="https://vancityjun.com">Vancityjun</a> All rights reserved.</p>
       </div>
-      <div class="app mb">
-        <h4>Download Our App</h4>
-        <div>
-          <img src="./assets/download-on-the-app-store-apple.svg" alt="">
-          <img src="./assets/google-play-badge.svg" alt="">
-        </div>
-      </div>
-      <p class="copy mb">© 2021. <a href="https://vancityjun.com">Vancityjun</a> All rights reserved.</p>
     </footer>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
