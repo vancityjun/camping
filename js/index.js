@@ -3,7 +3,7 @@ const Card = {
     <div class="card">
       <div class="img-container" :class="isItem ? 'thumbnail' : null">
         <div v-if="isItem" class="like flex-center">
-          <img :src="likeIcon()" alt=""/>
+          <img :src="likeIcon()" alt="" @click="toggleLike()"/>
         </div>
         <img :src="imgUrl" alt=""/>
       </div>
@@ -31,6 +31,9 @@ const Card = {
   methods: {
     likeIcon () {
       return `./assets/icons/heart-${this.like ? 'filled' : 'outline'}.svg`
+    },
+    toggleLike () {
+      this.like = !this.like
     }
   }
 }
@@ -59,53 +62,110 @@ new Vue({
     'footer-menu-item': FooterMenuItem 
   },
   data: {
+    screenWidth: window.innerWidth,
     services: [
       {
         imgUrl: './assets/fire.svg',
-        title: 'Camping & Day Use', 
+        title: 'Camping & Day Use',
         description: 'Return to your favorite spot or discover a new one that’s right for you.'
       },
       {
         imgUrl: './assets/ticket.svg',
-        title: 'Camping & Day Use', 
-        description: 'Return to your favorite spot or discover a new one that’s right for you.'
+        title: 'Tours & Tickets',
+        description: 'Reserve tours and tickets to participate in events.'
       },
       {
         imgUrl: './assets/license.svg',
-        title: 'Camping & Day Use', 
-        description: 'Return to your favorite spot or discover a new one that’s right for you.'
+        title: 'Permits',
+        description: 'Obtain permits for access to high-demand locations.'
       },
       {
         imgUrl: './assets/fishing.svg',
-        title: 'Camping & Day Use', 
-        description: 'Return to your favorite spot or discover a new one that’s right for you.'
+        title: 'Recreation Activities',
+        description: 'Find the best spots for hunting, fishing & recreational shooting.'
       },
     ],
     destinations: [
       {
-        imgUrl: './assets/image4.jpg',
+        imgUrl: './assets/uploaded/zach-betten-k-0.jpg',
+        title: 'Trickle Creek Ranch', 
+        description: 'Book unique camping experiences on over 300,000 campsites.',
+        price: 36,
+        like: false
+      },
+      {
+        imgUrl: './assets/uploaded/zach-betten-k-1.jpg',
+        title: 'Dragonfly Tiny Cabin', 
+        description: 'Book unique camping experiences on over 300,000 campsites.',
+        price: 36,
+        like: false
+      },
+      {
+        imgUrl: './assets/uploaded/zach-betten-k-2.jpg',
+        title: 'Tiny Cabin in the mountains', 
+        description: 'Book unique camping experiences on over 300,000 campsites.',
+        price: 36,
+        like: false
+      },
+      {
+        imgUrl: './assets/uploaded/zach-betten-k-3.jpg',
+        title: 'The Stuga', 
+        description: 'Book unique camping experiences on over 300,000 campsites.',
+        price: 36,
+        like: false
+      },
+      {
+        imgUrl: './assets/uploaded/zach-betten-k-4.jpg',
         title: 'Luxury Tiny Beach Cabin', 
         description: 'Book unique camping experiences on over 300,000 campsites.',
         price: 36,
         like: false
       },
       {
-        imgUrl: './assets/image4.jpg',
-        title: 'Luxury Tiny Beach Cabin', 
-        description: 'Book unique camping experiences on over 300,000 campsites.',
-        price: 36,
-        like: true
-      },
-      {
-        imgUrl: './assets/image4.jpg',
-        title: 'Luxury Tiny Beach Cabin', 
+        imgUrl: './assets/uploaded/zach-betten-k-5.jpg',
+        title: 'The Summit Cabin', 
         description: 'Book unique camping experiences on over 300,000 campsites.',
         price: 36,
         like: false
       },
       {
-        imgUrl: './assets/image4.jpg',
-        title: 'Luxury Tiny Beach Cabin', 
+        imgUrl: './assets/uploaded/zach-betten-k-6.jpg',
+        title: 'Kindred Spirits Cabin', 
+        description: 'Book unique camping experiences on over 300,000 campsites.',
+        price: 36,
+        like: false
+      },
+      {
+        imgUrl: './assets/uploaded/zach-betten-k-7.jpg',
+        title: 'The Hermitage Cabin', 
+        description: 'Book unique camping experiences on over 300,000 campsites.',
+        price: 36,
+        like: false
+      },
+      {
+        imgUrl: './assets/uploaded/zach-betten-k-8.jpg',
+        title: 'Red Lifeguard Stand', 
+        description: 'Book unique camping experiences on over 300,000 campsites.',
+        price: 36,
+        like: false
+      },
+      {
+        imgUrl: './assets/uploaded/zach-betten-k-9.jpg',
+        title: 'The Tree House', 
+        description: 'Book unique camping experiences on over 300,000 campsites.',
+        price: 36,
+        like: false
+      },
+      {
+        imgUrl: './assets/uploaded/zach-betten-k-10.jpg',
+        title: 'Barrier island elevated tent', 
+        description: 'Book unique camping experiences on over 300,000 campsites.',
+        price: 36,
+        like: false
+      },
+      {
+        imgUrl: './assets/uploaded/zach-betten-k-11.jpg',
+        title: 'Ninovan on the Shore', 
         description: 'Book unique camping experiences on over 300,000 campsites.',
         price: 36,
         like: false
@@ -123,25 +183,44 @@ new Vue({
         ]
       },
       {
-        title: 'Get to Know Us',
+        title: 'Plan with Us',
         items: [
-          'About Us',
-          'Rules & Reservation',
-          'Policies',
-          'Accessibility',
-          'Media Center'
+          'Find Trip Inspiration',
+          'Build a Trip',
+          'Buy a Pass',
+          'Enter a Lottery'
         ]
       },
       {
-        title: 'Get to Know Us',
+        title: 'Let Us Help You',
         items: [
-          'About Us',
-          'Rules & Reservation',
-          'Policies',
-          'Accessibility',
-          'Media Center'
+          'Your Account',
+          'Your Reservations',
+          'Contact Us',
+          'Help Center',
+          'Submit Feedback'
         ]
       },
-    ]
+    ],
+  },
+  mounted () {
+    window.addEventListener('resize', () => {
+      this.screenWidth = window.innerWidth
+    })
+  },
+  methods: {
+    viewPointWidth (min, max) {
+      return min <= this.screenWidth && this.screenWidth <= max
+    },
+  },
+  computed: {
+    renderDestinations () {
+      if (this.viewPointWidth(0, 600)) {
+        return this.destinations.slice(0, 4)
+      } else if (this.viewPointWidth(600, 1024)) {
+        return this.destinations.slice(0, 8)
+      }
+      return this.destinations
+    }
   }
 })

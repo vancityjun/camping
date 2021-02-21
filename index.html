@@ -11,7 +11,7 @@
     <nav>
       <div class="wrapper flex center-horizontal">
         <img src="./assets//logo.svg" alt="">
-        <div class="menu flex center-horizontal">
+        <div v-if="!viewPointWidth(0, 1024)" class="menu flex center-horizontal">
           <ul>
             <li class="active"><a href="javascript:void(0)">Home</a></li>
             <li><a href="javascript:void(0)">Destination</a></li>
@@ -27,7 +27,9 @@
             <a href="javascript:void(0)" class="btn outline">Sign in</a>
           </div>
         </div>
-        <a class="toggle"></a>
+        <a v-if="viewPointWidth(0, 1024)" href="javasccript:void(0)" class="toggle flex-center">
+          <img src="./assets/icons/toggle.svg" alt="">
+        </a>
       </div>
     </nav>
     <header class="flex-center">
@@ -58,7 +60,7 @@
       </div>
       <div class="card-wrapper">
         <card 
-          v-for="destination in destinations"
+          v-for="destination in renderDestinations"
           :img-url="destination.imgUrl"
           :title="destination.title"
           :description="destination.description"
@@ -90,7 +92,9 @@
     </section>
     <footer class="cf">
       <div class="wrapper">
-        <a href="javascript:void(0)" class="scroll-top flex-center"></a>
+        <a href="javascript:void(0)" class="scroll-top flex-center">
+          <img src="./assets/icons/arrow-up.svg" alt="">
+        </a>
         <div class="container">
           <div class="description mb">
             <h4>Hipcamp is everywhere you want to camp.</h4>

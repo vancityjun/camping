@@ -88,23 +88,18 @@ nav
   font-size: 18px
 
   .wrapper
-    +mobile()
+    @media (max-width: 1024px)
      justify-content: space-between
 
   .toggle
-    display: block
     square 50px
     border-radius: border-radius
     background: #fff
-    +desktop()
-      display: none
 
   .menu
     color: #fff
     justify-content: space-between
     width: calc(100% - 50px)
-    +mobile()
-      display: none
   
     ul
       display: flex
@@ -320,14 +315,14 @@ footer
     +desktop()
       display: flex
       flex-flow: column wrap
-    
-    +desktop()
+      width: calc(65vw + 270px)
+
       .container
         display: flex
         justify-content: space-between
         >div 
           width: 50%
-
+    
   .description
     max-width: 615px
 
@@ -352,6 +347,7 @@ footer
   top: -30px
   right: 50%
   transform: translateX(50%)
+  box-shadow: 5px 10px 30px rgba(#3B3735, .05)
   @media (min-width: 800px)
     right: 12vw
 
